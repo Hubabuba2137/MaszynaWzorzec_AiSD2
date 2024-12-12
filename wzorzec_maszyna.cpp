@@ -127,6 +127,16 @@ int main() {
         cout<<tab[i]<<", ";
     }
 
+    int poz=0;//
+    
+    for(int i=0; i<words.length()+1;i++){
+        if(tab[i] == word1.length()){
+            poz = i - word1.length()+1;
+        }
+    }
+    
+    cout<<"\n"<<poz<<"\n";
+
     for (int i = 0; i < rows; i++)
         delete[] arr[i];
 
