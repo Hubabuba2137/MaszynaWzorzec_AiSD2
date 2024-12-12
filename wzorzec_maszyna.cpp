@@ -72,7 +72,8 @@ int mask_index(string mask, char c){
 int main() {
     string word1 = "ababaca";
     string mask = masking(bin_rep_2(word1));
-    cout<< mask<<endl;
+    string words = "abababacaba";
+    //cout<< mask<<endl;
 
     int rows = word1.length()+1;
     int col = mask.length();
@@ -82,6 +83,7 @@ int main() {
     string key;
     string temp;
 
+    //generowanie macierzy stanu maszyny
     for(int j=0; j<rows;j++){
         key.push_back(word1[j]);
         for(int i=0; i<col; i++){
@@ -92,12 +94,37 @@ int main() {
         temp = key;
     }
 
-    //wypisywanie i usuwanie
+    //wypisywanie stanu maszyny
     for(int i=0; i<rows; i++){
         for(int j=0; j<col; j++){
             cout<<arr[i][j]<<", ";
         }
         cout<<"\n";
+    }
+    
+    int* tab = new int(rows+1);
+    for(int i=0; i<rows+1;i++){
+        tab[i] = 0;
+    }
+
+    for(int i=1; i<words.length()+1;i++){
+        char c = words[i-1];
+        //cout<<c<<"\n";
+        int index = mask_index(mask, c);
+        int index2 = tab[i-1];
+        
+        tab[i] = arr[index2][index];
+
+        /*
+        //wypisywanie kolejnej iteracji
+        cout<<"   "<<c<<"\n";
+        cout<<index2<<", "<<arr[index2][index]<<"\n";
+        cout<<"\n";
+        */
+    }
+
+    for(int i =0; i<words.length()+1;i++){
+        cout<<tab[i]<<", ";
     }
 
     for (int i = 0; i < rows; i++)
