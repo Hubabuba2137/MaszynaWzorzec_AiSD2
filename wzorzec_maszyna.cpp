@@ -2,6 +2,7 @@
 #include <string>
 #include <cstdint>
 #include <vector>
+#include <chrono>
 using namespace std;
 
 int compare_prefix_suffix(string a, string b, int n) {
